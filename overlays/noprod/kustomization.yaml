@@ -63,5 +63,4 @@ vars:
       kind: Secret
       name: certificados-tls
     fieldref:
-      fieldpath: data.ca     
- 
+      fieldpath: data.ca
