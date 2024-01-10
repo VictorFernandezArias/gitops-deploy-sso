@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   generation: 1
-  name: rhsso-dev
+  name: sso
   namespace: openshift-gitops
 spec:
   clusterResourceWhitelist:
@@ -20,21 +20,21 @@ kind: Application
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "0"
-  name: rhsso-dev
+  name: sso
   namespace: openshift-gitops
 spec:
   destination:
     name: ''
-    namespace: rhsso-dev
+    namespace: sso-noprod
     server: 'https://kubernetes.default.svc'
   source:
-    path: overlays/dev
+    path: overlays/noprod
 # we specify the folder for the files
-    repoURL: 'https://github.com/mcaballol/gitops-deploy-sso.git'
+    repoURL: 'https://github.com/VictorFernandezArias/gitops-deploy-sso.git'
 # the repository url
     targetRevision: main
 # and branch, in this case HEAD / main 
-  project: rhsso-dev
+  project: sso
   syncPolicy:
     automated:
       prune: true

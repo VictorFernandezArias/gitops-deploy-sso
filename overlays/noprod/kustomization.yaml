@@ -1,0 +1,67 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+- ../../base
+
+configurations:
+  - config.yaml
+
+generatorOptions:
+ disableNameSuffixHash: true
+secretGenerator:
+# - name: keycloak-db-secret
+#   envs:
+#   - env/bd-credential.env
+- name: credential-keycloak
+  envs:
+  - env/sso-credential.env
+# - name: certificados-tls
+#   files:
+#   - env/certificados/cert
+#   - env/certificados/key
+#   - env/certificados/ca
+
+
+patches:
+- patch: |-
+    - op: add
+      path: /spec/targetNamespaces/-
+      value: sso-noprod
+  target:
+    group: operators.coreos.com
+    kind: OperatorGroup
+    name: rhsso
+    version: v1
+
+
+resources: 
+#- namespace.yaml
+- sso-instance.yaml
+- route-public-tls.yaml
+# - sso-realms/test-client-testclient.yaml
+# - sso-realms/test-realm.yaml
+
+
+vars:
+  - name: CERTIFICATE
+    objref:
+      apiVersion: v1
+      kind: Secret
+      name: certificados-tls
+    fieldref:
+      fieldpath: data.cert
+  - name: KEY
+    objref:
+      apiVersion: v1
+      kind: Secret
+      name: certificados-tls
+    fieldref:
+      fieldpath: data.key
+  - name: CA
+    objref:
+      apiVersion: v1
+      kind: Secret
+      name: certificados-tls
+    fieldref:
+      fieldpath: data.ca     
+ 

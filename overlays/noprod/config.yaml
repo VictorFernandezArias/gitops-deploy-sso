@@ -1,0 +1,11 @@
+varReference:
+  - path: spec/tls/certificate
+    kind: Route
+    apiVersion: route.openshift.io/v1
+  - path: spec/tls/key
+    kind: Route
+    apiVersion: route.openshift.io/v1
+  - path: spec/tls/caCertificate
+    kind: Route
+    apiVersion: route.openshift.io/v1    
+    
