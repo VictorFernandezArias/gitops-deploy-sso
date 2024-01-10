@@ -15,11 +15,11 @@ secretGenerator:
 - name: credential-keycloak
   envs:
   - env/sso-credential.env
-# - name: certificados-tls
-#   files:
-#   - env/certificados/cert
-#   - env/certificados/key
-#   - env/certificados/ca
+- name: certificados-tls
+  files:
+  - env/certificados/cert
+  - env/certificados/key
+  - env/certificados/ca
 
 
 patches:
