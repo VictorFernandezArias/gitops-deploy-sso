@@ -18,16 +18,10 @@ spec:
   tls:
     termination: reencrypt
     certificate: |-
-      -----BEGIN CERTIFICATE-----
       $(CERTIFICATE)
-      -----END CERTIFICATE-----
     key: |-
-      -----BEGIN PRIVATE KEY-----
       $(KEY)
-      -----END PRIVATE KEY-----  
     caCertificate: |-
-      -----BEGIN CERTIFICATE-----
       $(CA)
-      -----END CERTIFICATE-----
   wildcardPolicy: None
   

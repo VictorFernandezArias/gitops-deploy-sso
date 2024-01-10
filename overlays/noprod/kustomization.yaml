@@ -64,3 +64,10 @@ vars:
       name: certificados-tls
     fieldref:
       fieldpath: data.ca
+  - name: CA2
+    objref:
+      apiVersion: v1
+      kind: Secret
+      name: certificados-tls
+    fieldref:
+      fieldpath: data.ca    
