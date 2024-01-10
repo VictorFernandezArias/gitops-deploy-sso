@@ -3,6 +3,8 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: keycloak-public-tls
   namespace: sso-noprod
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
   labels:
     app: keycloak
 spec:
