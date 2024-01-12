@@ -18,7 +18,9 @@ spec:
   tls:
     termination: reencrypt
     certificate: |-
+      -----BEGIN CERTIFICATE-----
       $(CERTIFICATE)
+      -----END CERTIFICATE-----
     key: |-
       $(KEY)
     caCertificate: |-

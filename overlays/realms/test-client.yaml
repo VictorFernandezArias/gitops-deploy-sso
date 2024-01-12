@@ -1,0 +1,46 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakClient
+metadata:
+  name: testclient
+  labels:
+    app: sso
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  client:
+    clientId: testclient
+    directAccessGrantsEnabled: false
+    id: 1bd4d808-92dc-46ab-8673-515ad53950e9
+    implicitFlowEnabled: false
+    publicClient: false
+    secret: 7wyDCDc5yr6Nur1OD5bdHJQdUbRYIeRT
+    standardFlowEnabled: false
+    serviceAccountsEnabled: true
+    frontchannelLogout: false
+    attributes: 
+      # "oidc.ciba.grant.enabled": "false",
+      # "oauth2.device.authorization.grant.enabled": "false",
+      # "client.secret.creation.time": "1702321603",
+      "backchannel.logout.session.required": "true"
+      # "backchannel.logout.revoke.offline.tokens": "false"
+    defaultClientScopes: 
+      -  "web-origins"
+      -  "acr"
+      -  "profile"
+      -  "roles"
+      -  "email"
+      
+    optionalClientScopes:
+      - "address"
+      - "phone"
+      - "offline_access"
+      - "microprofile-jwt"
+      
+  serviceAccountClientRoles:
+    realm-management: 
+      - "manage-clients"
+  realmSelector:
+    matchLabels:
+      app: sso-test
+  scopeMappings: {}
