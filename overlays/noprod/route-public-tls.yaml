@@ -3,12 +3,11 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: keycloak-public-tls
   namespace: sso-noprod
-  annotations:
-    argocd.argoproj.io/sync-wave: "4"
   labels:
     app: keycloak
 spec:
   host: sso-noprod.cclh.io
+  # path: /hola
   to:
     kind: Service
     name: keycloak
@@ -17,13 +16,10 @@ spec:
     targetPort: keycloak
   tls:
     termination: reencrypt
-    certificate: |-
-      -----BEGIN CERTIFICATE-----
-      $(CERTIFICATE)
-      -----END CERTIFICATE-----
+    certificate: placeholder
     key: |-
-      $(KEY)
+      placeholder
     caCertificate: |-
-      $(CA)
+      placeholder
   wildcardPolicy: None
   

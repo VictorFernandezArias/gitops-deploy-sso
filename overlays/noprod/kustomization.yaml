@@ -37,7 +37,7 @@ patches:
 resources: 
 #- namespace.yaml
 - sso-instance.yaml
-- route-public-tls.yaml
+# - route-public-tls.yaml
 # - sso-realms/test-client-testclient.yaml
 # - sso-realms/test-realm.yaml
 
