@@ -9,7 +9,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true  
 spec:
   user:
-    username: "user-portal"
+    username: "user_portal"
     firstName: "user"
     lastName: "portal"
     email: "user@portal.com"
