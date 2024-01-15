@@ -1,7 +1,7 @@
 apiVersion: keycloak.org/v1alpha1
 kind: KeycloakUser
 metadata:
-  name: user_portal
+  name: user-portal
   labels:
     app: sso
   annotations:
@@ -9,7 +9,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true  
 spec:
   user:
-    username: "user_portal"
+    username: "user-portal"
     firstName: "user"
     lastName: "portal"
     email: "user@portal.com"
