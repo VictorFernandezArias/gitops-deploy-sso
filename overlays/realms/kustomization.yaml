@@ -5,4 +5,6 @@ kind: Kustomization
 resources: 
 - test-client.yaml
 - test-realm.yaml
-- new-client.yaml
+- portal-client.yaml
+- portal-user.yaml
+
