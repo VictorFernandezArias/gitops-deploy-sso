@@ -7,4 +7,6 @@ resources:
 - test-realm.yaml
 - portal-client.yaml
 - portal-user.yaml
+- oidc-client.yaml
+
 
