@@ -37,17 +37,17 @@ spec:
           "jsonType.label": "boolean"
         
       - id: 2c04874f-20b0-44f7-a6cb-b894f183483c
-        name: "org_name"
+        name: "portal"
         protocol: "openid-connect"
         protocolMapper: "oidc-usermodel-attribute-mapper"
         consentRequired: false
         config: 
           "userinfo.token.claim": "false"
           "multivalued": "false"
-          "user.attribute": "org_name"
+          "user.attribute": "portal"
           "id.token.claim": "true"
           "access.token.claim": "true"
-          "claim.name": "org_name"
+          "claim.name": "portal"
           "jsonType.label": "String"
     defaultClientScopes: 
       - "web-origins"

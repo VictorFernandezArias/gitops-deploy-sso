@@ -1,0 +1,20 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakUser
+metadata:
+  name: user_portal
+  labels:
+    app: sso
+spec:
+  user:
+    username: "user_portal"
+    firstName: "user"
+    lastName: "portal"
+    email: "user@portal.com"
+    enabled: True
+    emailVerified: True
+    credentials:
+      - type: "password"
+        value: "portal01"
+  realmSelector:
+    matchLabels:
+      app: sso
