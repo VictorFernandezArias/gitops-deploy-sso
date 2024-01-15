@@ -18,6 +18,10 @@ spec:
     credentials:
       - type: "password"
         value: "portal01"
+        temporary: false
+    attributes:
+      portal:
+        - "true"
   realmSelector:
     matchLabels:
       app: sso-test
