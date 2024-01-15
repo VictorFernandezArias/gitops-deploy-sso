@@ -4,6 +4,9 @@ metadata:
   name: user_portal
   labels:
     app: sso
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true  
 spec:
   user:
     username: "user_portal"
@@ -17,4 +20,4 @@ spec:
         value: "portal01"
   realmSelector:
     matchLabels:
-      app: sso
+      app: sso-test
