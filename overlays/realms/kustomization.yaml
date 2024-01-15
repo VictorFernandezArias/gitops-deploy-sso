@@ -5,3 +5,4 @@ kind: Kustomization
 resources: 
 - test-client.yaml
 - test-realm.yaml
+- new-client.yaml
