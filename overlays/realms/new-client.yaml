@@ -1,0 +1,65 @@
+kind: KeycloakClient
+apiVersion: keycloak.org/v1alpha1
+metadata:
+  name: client-portal
+  labels:
+    app: sso
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  realmSelector:
+    matchLabels:
+      app: sso-test
+  client:
+    clientId: client-portal
+    secret: client-portal
+    clientAuthenticatorType: client-secret
+    consentRequired: false
+    standardFlowEnabled: true
+    redirectUris:
+      - "https://3scale-admin.apps.cluster-bgtpz.bgtpz.sandbox1331.opentlc.com/*"
+
+    rootUrl: "https://3scale-admin.apps.cluster-bgtpz.bgtpz.sandbox1331.opentlc.com/"
+    protocolMappers:
+      - id: 8ba6ceb8-1d4b-413b-8341-9de7d901e0ed
+        name: "email verified"
+        protocol: "openid-connect"
+        protocolMapper: "oidc-usermodel-property-mapper"
+        consentRequired: false
+        config: 
+          "userinfo.token.claim": "true"
+          "user.attribute": "emailVerified"
+          "id.token.claim": "true"
+          "access.token.claim": "true"
+          "claim.name": "email_verified"
+          "jsonType.label": "boolean"
+        
+      - id: 2c04874f-20b0-44f7-a6cb-b894f183483c
+        name: "org_name"
+        protocol: "openid-connect"
+        protocolMapper: "oidc-usermodel-attribute-mapper"
+        consentRequired: false
+        config: 
+          "userinfo.token.claim": "false"
+          "multivalued": "false"
+          "user.attribute": "org_name"
+          "id.token.claim": "true"
+          "access.token.claim": "true"
+          "claim.name": "org_name"
+          "jsonType.label": "String"
+    defaultClientScopes: 
+      - "web-origins"
+      - "acr"
+      - "profile"
+      - "roles"
+      - "email"
+      
+    optionalClientScopes: 
+      - "address"
+      - "phone"
+      - "offline_access"
+      - "microprofile-jwt"
+    attributes:
+      "backchannel.logout.session.required": "true"
+  
